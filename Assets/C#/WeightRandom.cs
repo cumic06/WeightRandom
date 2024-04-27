@@ -5,27 +5,40 @@ using System.Linq;
 
 public class WeightRandom : MonoBehaviour
 {
-    [SerializeField] private List<int> weightList = new();
+    [SerializeField] private List<WeightData> weightData;
 
     [ContextMenu("Random")]
     public void GetRandomValue()
     {
-        int maxWeight = 0;
+        float maxWeight = 0;
+        int count = 0;
 
-        foreach (var item in weightList)
+        foreach (var item in weightData)
         {
-            maxWeight += item;
+            maxWeight += item.weightValue;
         }
 
-        int randomValue = Random.Range(0, maxWeight);
-
-        for (int i = 0; i < weightList.Count; i++)
+        for (int j = 0; j < 1000; j++)
         {
-            if (randomValue >= weightList[i])
+            float pivot = Random.Range(0, maxWeight);
+            float weight = 0;
+            count++;
+            for (int i = 0; i < weightData.Count; i++)
             {
-                Debug.Log(weightList[i].ToString());
-                return;
+                weight += weightData[i].weightValue;
+                if (pivot <= weight)
+                {
+                    Debug.Log($"<color=red>{weightData[i].name}</color>");
+                    break;
+                }
             }
         }
     }
+}
+
+[System.Serializable]
+public class WeightData
+{
+    public string name;
+    public float weightValue;
 }

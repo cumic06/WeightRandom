@@ -259,7 +259,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4856876263b62c24eb049b48d8c81011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weightList: 0a000000140000001e000000
+  weightData:
+  - name: "\uC804\uC124"
+    weightValue: 1
+  - name: "\uB808\uC5B4"
+    weightValue: 30
+  - name: "\uC77C\uBC18"
+    weightValue: 80
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
